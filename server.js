@@ -4,7 +4,7 @@ const PORT = process.env.PORT;
 import posts from "./routes/posts.js";
 import path from "path";
 import logger from "./middleware/logger.js";
-import { appendFileSync } from "fs";
+import errorHandler from "./middleware/error.js";
 
 //This initializes express
 const app = express();
@@ -17,6 +17,9 @@ app.use(logger);
 
 // Routes
 app.use("/api/posts", posts);
+
+// Error Handler
+app.use(errorHandler);
 
 //Setup static folder
 //This takes the specified file type. Ex: localhost:5000/about.html
