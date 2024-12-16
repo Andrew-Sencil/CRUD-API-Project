@@ -1,0 +1,15 @@
+Express
+
+- It is a minimal and flexible web framework for Node.js
+- Used for building server-side web applications and APIs
+- The most popular framework for Node
+- Simplifies the process of handling HTTP requests and responses
+- A very fast and unopinionated framework
+
+Two types of web frameworks:
+
+		Opinionated					vs				Unopinionated
+Suggested ways to do things 				Different ways to do the same thing
+Usually offer a lot of bells & whistles		Includes the bare necessities
+Strict folder structure						Structure folders how you want
+
