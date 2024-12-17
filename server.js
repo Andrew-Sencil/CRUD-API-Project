@@ -4,13 +4,22 @@ const PORT = process.env.PORT;
 import posts from "./routes/posts.js";
 import path from "path";
 import logger from "./middleware/logger.js";
+import { fileURLToPath } from "url";
 import errorHandler from "./middleware/error.js";
+import notFound from "./middleware/notFound.js";
+
+//Get the directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //This initializes express
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+//Setup static folder
+app.use(express.static(path.join(__dirname, "public")));
 
 // Logger
 app.use(logger);
@@ -19,11 +28,8 @@ app.use(logger);
 app.use("/api/posts", posts);
 
 // Error Handler
+app.use(notFound);
 app.use(errorHandler);
-
-//Setup static folder
-//This takes the specified file type. Ex: localhost:5000/about.html
-// app.use(express.static(path.join(__dirname, "public")));
 
 // let posts = [
 //   { id: 1, title: "Post One" },
